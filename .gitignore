@@ -5,3 +5,5 @@
 tags
 node_modules
 __pycache__
+# vite build artifacts
+gpu/form/dist/

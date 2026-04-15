@@ -1,0 +1,26 @@
+{
+ "actions": [],
+ "creation": "2026-04-15 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["referee_name", "address", "phone_number", "place_of_work", "position"],
+ "fields": [
+  {"fieldname": "referee_name", "fieldtype": "Data", "label": "Name of referee", "in_list_view": 1, "columns": 3},
+  {"fieldname": "address", "fieldtype": "Data", "label": "Address", "in_list_view": 1, "columns": 3},
+  {"fieldname": "phone_number", "fieldtype": "Data", "label": "Phone number", "in_list_view": 1, "columns": 2},
+  {"fieldname": "place_of_work", "fieldtype": "Data", "label": "Place of work", "in_list_view": 1, "columns": 2},
+  {"fieldname": "position", "fieldtype": "Data", "label": "Position", "in_list_view": 1, "columns": 2}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Gpu",
+ "name": "GPU Referee",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

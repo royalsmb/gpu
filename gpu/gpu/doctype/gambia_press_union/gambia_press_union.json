@@ -1,520 +1,134 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:GPU-APP-{#####}",
  "creation": "2025-08-29 09:41:59.085524",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "personal_information_section",
-  "title",
-  "first_name",
-  "middle_name",
-  "last_name",
-  "column_break_name",
+  "applicant_name",
+  "sex",
   "date_of_birth",
-  "gender",
+  "place_of_birth",
+  "column_break_p1",
+  "residence",
   "nationality",
-  "marital_status",
-  "contact_information_section",
-  "email_address",
-  "phone_number",
-  "column_break_contact",
-  "mobile_number",
-  "whatsapp_number",
-  "address_section",
-  "residential_address",
-  "city",
-  "column_break_address",
-  "region",
-  "postal_code",
-  "professional_information_section",
-  "highest_qualification",
-  "institution",
-  "column_break_education",
-  "year_graduated",
-  "other_qualifications",
-  "employment_details_section",
-  "current_employer",
-  "job_title",
-  "column_break_employment",
-  "years_of_experience",
-  "employment_type",
-  "work_address",
-  "media_specialization_section",
-  "area_of_specialization",
-  "media_type",
-  "column_break_media",
-  "languages_spoken",
-  "previous_media_experience",
-  "membership_information_section",
-  "membership_type",
-  "application_date",
-  "column_break_membership",
-  "membership_fee",
-  "payment_method",
-  "references_section",
-  "reference_1_name",
-  "reference_1_organization",
-  "column_break_ref1",
-  "reference_1_phone",
-  "reference_1_email",
-  "section_break_ref2",
-  "reference_2_name",
-  "reference_2_organization",
-  "column_break_ref2",
-  "reference_2_phone",
-  "reference_2_email",
-  "documents_section",
-  "passport_photo",
-  "cv_resume",
-  "column_break_docs",
-  "educational_certificates",
-  "national_id_copy",
+  "mobile",
+  "email",
+  "emergency_contact_section",
+  "emergency_contact_name",
+  "emergency_relationship",
+  "emergency_address",
+  "column_break_e1",
+  "emergency_phone",
+  "emergency_email",
+  "employer_section",
+  "media_house",
+  "employer_address",
+  "employer_tel",
+  "employer_email",
+  "column_break_emp1",
+  "publisher",
+  "employer_start_date",
+  "current_position",
+  "experience_section",
+  "experience",
+  "senior_school_section",
+  "senior_school",
+  "senior_year_completed",
+  "senior_qualification",
+  "tertiary_education_section",
+  "tertiary_education",
+  "referees_section",
+  "referees",
   "declaration_section",
-  "terms_acceptance",
-  "applicant_signature",
-  "column_break_declaration",
-  "application_date_signed",
-  "witness_name"
+  "declaration_signature",
+  "declaration_date",
+  "agreed",
+  "payment_section",
+  "payment_status",
+  "amount_paid",
+  "paid_at",
+  "column_break_pay1",
+  "checkout_id",
+  "transaction_id",
+  "payment_url",
+  "approval_section",
+  "status",
+  "approval_reason",
+  "approved_by",
+  "approval_date"
  ],
  "fields": [
-  {
-   "fieldname": "personal_information_section",
-   "fieldtype": "Section Break",
-   "label": "Personal Information"
-  },
-  {
-   "fieldname": "title",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Title",
-   "options": "Mr.\nMs.\nMrs.\nDr.\nProf.",
-   "reqd": 1
-  },
-  {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "First Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "middle_name",
-   "fieldtype": "Data",
-   "label": "Middle Name"
-  },
-  {
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Last Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_name",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "date_of_birth",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date of Birth",
-   "reqd": 1
-  },
-  {
-   "fieldname": "gender",
-   "fieldtype": "Select",
-   "label": "Gender",
-   "options": "Male\nFemale\nOther",
-   "reqd": 1
-  },
-  {
-   "default": "Gambian",
-   "fieldname": "nationality",
-   "fieldtype": "Data",
-   "label": "Nationality",
-   "reqd": 1
-  },
-  {
-   "fieldname": "marital_status",
-   "fieldtype": "Select",
-   "label": "Marital Status",
-   "options": "Single\nMarried\nDivorced\nWidowed"
-  },
-  {
-   "fieldname": "contact_information_section",
-   "fieldtype": "Section Break",
-   "label": "Contact Information"
-  },
-  {
-   "fieldname": "email_address",
-   "fieldtype": "Data",
-   "label": "Email Address",
-   "options": "Email",
-   "reqd": 1
-  },
-  {
-   "fieldname": "phone_number",
-   "fieldtype": "Data",
-   "label": "Phone Number",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_contact",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "mobile_number",
-   "fieldtype": "Data",
-   "label": "Mobile Number"
-  },
-  {
-   "fieldname": "whatsapp_number",
-   "fieldtype": "Data",
-   "label": "WhatsApp Number"
-  },
-  {
-   "fieldname": "address_section",
-   "fieldtype": "Section Break",
-   "label": "Address Information"
-  },
-  {
-   "fieldname": "residential_address",
-   "fieldtype": "Small Text",
-   "label": "Residential Address",
-   "reqd": 1
-  },
-  {
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City/Town",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_address",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "region",
-   "fieldtype": "Select",
-   "label": "Region",
-   "options": "Banjul\nWestern Region\nNorth Bank Region\nLower River Region\nCentral River Region\nUpper River Region",
-   "reqd": 1
-  },
-  {
-   "fieldname": "postal_code",
-   "fieldtype": "Data",
-   "label": "Postal Code"
-  },
-  {
-   "fieldname": "professional_information_section",
-   "fieldtype": "Section Break",
-   "label": "Educational Background"
-  },
-  {
-   "fieldname": "highest_qualification",
-   "fieldtype": "Select",
-   "label": "Highest Qualification",
-   "options": "High School\nDiploma\nBachelor's Degree\nMaster's Degree\nPhD\nOther",
-   "reqd": 1
-  },
-  {
-   "fieldname": "institution",
-   "fieldtype": "Data",
-   "label": "Institution/University",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_education",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "year_graduated",
-   "fieldtype": "Int",
-   "label": "Year Graduated"
-  },
-  {
-   "fieldname": "other_qualifications",
-   "fieldtype": "Small Text",
-   "label": "Other Qualifications/Certifications"
-  },
-  {
-   "fieldname": "employment_details_section",
-   "fieldtype": "Section Break",
-   "label": "Employment Details"
-  },
-  {
-   "fieldname": "current_employer",
-   "fieldtype": "Data",
-   "label": "Current Employer/Organization",
-   "reqd": 1
-  },
-  {
-   "fieldname": "job_title",
-   "fieldtype": "Data",
-   "label": "Job Title/Position",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_employment",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "years_of_experience",
-   "fieldtype": "Float",
-   "label": "Years of Experience in Media",
-   "precision": "1"
-  },
-  {
-   "fieldname": "employment_type",
-   "fieldtype": "Select",
-   "label": "Employment Type",
-   "options": "Full-time\nPart-time\nFreelance\nSelf-employed\nVolunteer"
-  },
-  {
-   "fieldname": "work_address",
-   "fieldtype": "Small Text",
-   "label": "Work Address"
-  },
-  {
-   "fieldname": "media_specialization_section",
-   "fieldtype": "Section Break",
-   "label": "Media Specialization"
-  },
-  {
-   "fieldname": "area_of_specialization",
-   "fieldtype": "Select",
-   "label": "Area of Specialization",
-   "options": "Print Journalism\nBroadcast Journalism\nOnline/Digital Media\nPhotojournalism\nVideo Production\nRadio Production\nPublic Relations\nMarketing Communications\nOther"
-  },
-  {
-   "fieldname": "media_type",
-   "fieldtype": "Select",
-   "label": "Type of Media Organization",
-   "options": "Newspaper\nRadio Station\nTelevision\nOnline Platform\nMagazine\nNews Agency\nFreelance\nOther"
-  },
-  {
-   "fieldname": "column_break_media",
-   "fieldtype": "Column Break"
-  },
-  {
-   "description": "Separate with commas",
-   "fieldname": "languages_spoken",
-   "fieldtype": "Data",
-   "label": "Languages Spoken"
-  },
-  {
-   "fieldname": "previous_media_experience",
-   "fieldtype": "Small Text",
-   "label": "Previous Media Experience"
-  },
-  {
-   "fieldname": "membership_information_section",
-   "fieldtype": "Section Break",
-   "label": "Membership Information"
-  },
-  {
-   "fieldname": "membership_type",
-   "fieldtype": "Select",
-   "label": "Membership Type",
-   "options": "Full Member\nAssociate Member\nStudent Member\nSenior Member",
-   "reqd": 1
-  },
-  {
-   "default": "Today",
-   "fieldname": "application_date",
-   "fieldtype": "Date",
-   "label": "Application Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_membership",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "membership_fee",
-   "fieldtype": "Currency",
-   "label": "Membership Fee"
-  },
-  {
-   "fieldname": "payment_method",
-   "fieldtype": "Select",
-   "label": "Payment Method",
-   "options": "Cash\nBank Transfer\nMobile Money\nCheque"
-  },
-  {
-   "fieldname": "references_section",
-   "fieldtype": "Section Break",
-   "label": "Professional References"
-  },
-  {
-   "fieldname": "reference_1_name",
-   "fieldtype": "Data",
-   "label": "Reference 1 - Full Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "reference_1_organization",
-   "fieldtype": "Data",
-   "label": "Organization/Company"
-  },
-  {
-   "fieldname": "column_break_ref1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "reference_1_phone",
-   "fieldtype": "Data",
-   "label": "Phone Number"
-  },
-  {
-   "fieldname": "reference_1_email",
-   "fieldtype": "Data",
-   "label": "Email Address",
-   "options": "Email"
-  },
-  {
-   "fieldname": "section_break_ref2",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "reference_2_name",
-   "fieldtype": "Data",
-   "label": "Reference 2 - Full Name"
-  },
-  {
-   "fieldname": "reference_2_organization",
-   "fieldtype": "Data",
-   "label": "Organization/Company"
-  },
-  {
-   "fieldname": "column_break_ref2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "reference_2_phone",
-   "fieldtype": "Data",
-   "label": "Phone Number"
-  },
-  {
-   "fieldname": "reference_2_email",
-   "fieldtype": "Data",
-   "label": "Email Address",
-   "options": "Email"
-  },
-  {
-   "fieldname": "documents_section",
-   "fieldtype": "Section Break",
-   "label": "Required Documents"
-  },
-  {
-   "fieldname": "passport_photo",
-   "fieldtype": "Attach Image",
-   "label": "Passport Size Photo",
-   "reqd": 1
-  },
-  {
-   "fieldname": "cv_resume",
-   "fieldtype": "Attach",
-   "label": "CV/Resume",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_docs",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "educational_certificates",
-   "fieldtype": "Attach",
-   "label": "Educational Certificates"
-  },
-  {
-   "fieldname": "national_id_copy",
-   "fieldtype": "Attach",
-   "label": "National ID Copy",
-   "reqd": 1
-  },
-  {
-   "fieldname": "declaration_section",
-   "fieldtype": "Section Break",
-   "label": "Declaration and Agreement"
-  },
-  {
-   "default": "0",
-   "fieldname": "terms_acceptance",
-   "fieldtype": "Check",
-   "label": "I accept the terms and conditions of GPU membership",
-   "reqd": 1
-  },
-  {
-   "fieldname": "applicant_signature",
-   "fieldtype": "Signature",
-   "label": "Applicant Signature"
-  },
-  {
-   "fieldname": "column_break_declaration",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "Today",
-   "fieldname": "application_date_signed",
-   "fieldtype": "Date",
-   "label": "Date Signed"
-  },
-  {
-   "fieldname": "witness_name",
-   "fieldtype": "Data",
-   "label": "Witness Name (if applicable)"
-  }
+  {"fieldname": "personal_information_section", "fieldtype": "Section Break", "label": "Personal Information"},
+  {"fieldname": "applicant_name", "fieldtype": "Data", "label": "Name of Applicant", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "sex", "fieldtype": "Select", "label": "Sex", "options": "\nMale\nFemale", "reqd": 1},
+  {"fieldname": "date_of_birth", "fieldtype": "Date", "label": "Date of Birth", "reqd": 1},
+  {"fieldname": "place_of_birth", "fieldtype": "Data", "label": "Place of Birth", "reqd": 1},
+  {"fieldname": "column_break_p1", "fieldtype": "Column Break"},
+  {"fieldname": "residence", "fieldtype": "Data", "label": "Residence", "reqd": 1},
+  {"fieldname": "nationality", "fieldtype": "Data", "label": "Nationality", "reqd": 1},
+  {"fieldname": "mobile", "fieldtype": "Data", "label": "Mobile #", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "email", "fieldtype": "Data", "label": "Email", "options": "Email", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "emergency_contact_section", "fieldtype": "Section Break", "label": "Emergency Contact"},
+  {"fieldname": "emergency_contact_name", "fieldtype": "Data", "label": "Contact in case of emergency"},
+  {"fieldname": "emergency_relationship", "fieldtype": "Data", "label": "Relationship with the contact"},
+  {"fieldname": "emergency_address", "fieldtype": "Small Text", "label": "Contact's address"},
+  {"fieldname": "column_break_e1", "fieldtype": "Column Break"},
+  {"fieldname": "emergency_phone", "fieldtype": "Data", "label": "Contact's phone number"},
+  {"fieldname": "emergency_email", "fieldtype": "Data", "label": "Contact's email", "options": "Email"},
+  {"fieldname": "employer_section", "fieldtype": "Section Break", "label": "Employer"},
+  {"fieldname": "media_house", "fieldtype": "Data", "label": "Name of media house"},
+  {"fieldname": "employer_address", "fieldtype": "Small Text", "label": "Address"},
+  {"fieldname": "employer_tel", "fieldtype": "Data", "label": "Tel"},
+  {"fieldname": "employer_email", "fieldtype": "Data", "label": "Email", "options": "Email"},
+  {"fieldname": "column_break_emp1", "fieldtype": "Column Break"},
+  {"fieldname": "publisher", "fieldtype": "Data", "label": "Publisher / Proprietor"},
+  {"fieldname": "employer_start_date", "fieldtype": "Data", "label": "When did you start work (month and year)"},
+  {"fieldname": "current_position", "fieldtype": "Data", "label": "Current Position"},
+  {"fieldname": "experience_section", "fieldtype": "Section Break", "label": "Experience"},
+  {"fieldname": "experience", "fieldtype": "Table", "label": "Previous Institutions", "options": "GPU Experience"},
+  {"fieldname": "senior_school_section", "fieldtype": "Section Break", "label": "Senior School"},
+  {"fieldname": "senior_school", "fieldtype": "Data", "label": "Name of senior school attended"},
+  {"fieldname": "senior_year_completed", "fieldtype": "Data", "label": "Year completed"},
+  {"fieldname": "senior_qualification", "fieldtype": "Data", "label": "Qualification attained upon completion"},
+  {"fieldname": "tertiary_education_section", "fieldtype": "Section Break", "label": "Tertiary Education"},
+  {"fieldname": "tertiary_education", "fieldtype": "Table", "label": "Tertiary Education", "options": "GPU Tertiary Education"},
+  {"fieldname": "referees_section", "fieldtype": "Section Break", "label": "Referees"},
+  {"fieldname": "referees", "fieldtype": "Table", "label": "Referees", "options": "GPU Referee"},
+  {"fieldname": "declaration_section", "fieldtype": "Section Break", "label": "Declaration"},
+  {"fieldname": "declaration_signature", "fieldtype": "Data", "label": "Signature"},
+  {"fieldname": "declaration_date", "fieldtype": "Date", "label": "Date"},
+  {"default": "0", "fieldname": "agreed", "fieldtype": "Check", "label": "I agree to the declaration"},
+  {"fieldname": "payment_section", "fieldtype": "Section Break", "label": "Payment", "collapsible": 1},
+  {"fieldname": "payment_status", "fieldtype": "Select", "label": "Payment Status", "options": "Not Required\nPending\nPaid\nFailed\nCancelled", "default": "Not Required", "read_only": 1, "in_list_view": 1, "in_standard_filter": 1},
+  {"fieldname": "amount_paid", "fieldtype": "Currency", "label": "Amount Paid", "read_only": 1},
+  {"fieldname": "paid_at", "fieldtype": "Datetime", "label": "Paid At", "read_only": 1},
+  {"fieldname": "column_break_pay1", "fieldtype": "Column Break"},
+  {"fieldname": "checkout_id", "fieldtype": "Data", "label": "Jokoor Checkout ID", "read_only": 1},
+  {"fieldname": "transaction_id", "fieldtype": "Data", "label": "Transaction ID", "read_only": 1},
+  {"fieldname": "payment_url", "fieldtype": "Data", "label": "Payment URL", "read_only": 1},
+  {"fieldname": "approval_section", "fieldtype": "Section Break", "label": "For Executive Only", "collapsible": 1},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Pending\nApproved\nRejected\nOn Hold\nInactive", "default": "Pending", "in_list_view": 1, "in_standard_filter": 1, "hidden": 1, "read_only": 1},
+  {"fieldname": "approval_reason", "fieldtype": "Small Text", "label": "If not approved, reason(s)"},
+  {"fieldname": "approved_by", "fieldtype": "Data", "label": "Signed (President/Secretary General)"},
+  {"fieldname": "approval_date", "fieldtype": "Date", "label": "Date"}
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-29 12:29:32.573976",
+ "modified": "2026-04-15 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Gpu",
  "name": "Gambia Press Union",
  "owner": "Administrator",
  "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "All",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Guest",
-   "share": 1,
-   "write": 1
-  }
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1}
  ],
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "applicant_name"
 }

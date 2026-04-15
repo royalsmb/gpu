@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ibm-red: #8a0303;
+  --color-ibm-red-hover: #a20404;
+  --color-ibm-gray-10: #f4f4f4;
+  --color-ibm-gray-20: #e0e0e0;
+  --color-ibm-gray-60: #525252;
+  --color-ibm-gray-80: #393939;
+  --color-ibm-gray-100: #161616;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ibm-gray-10);
+  color: var(--color-ibm-gray-100);
+}

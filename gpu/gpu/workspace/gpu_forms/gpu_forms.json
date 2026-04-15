@@ -1,0 +1,108 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"header1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>GPU Forms</b></span>\",\"col\":12}},{\"id\":\"shortcut1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Applications\",\"col\":4}},{\"id\":\"shortcut2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Application\",\"col\":4}},{\"id\":\"shortcut3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Public Form\",\"col\":4}},{\"id\":\"spacer1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"header2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Applications\",\"col\":4}},{\"id\":\"spacer2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"header3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Number Cards</b></span>\",\"col\":12}},{\"id\":\"numcard1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Applications\",\"col\":4}},{\"id\":\"numcard2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Applications\",\"col\":4}},{\"id\":\"numcard3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Approved Applications\",\"col\":4}}]",
+ "creation": "2026-04-15 12:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "form",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "GPU Forms",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Applications",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Membership Applications",
+   "link_to": "Gambia Press Union",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "GPU Settings",
+   "link_to": "GPU Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-04-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Gpu",
+ "name": "GPU Forms",
+ "number_cards": [
+  {
+   "label": "Total Applications",
+   "number_card_name": "Total Applications"
+  },
+  {
+   "label": "Pending Applications",
+   "number_card_name": "Pending Applications"
+  },
+  {
+   "label": "Approved Applications",
+   "number_card_name": "Approved Applications"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 100.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Applications",
+   "link_to": "Gambia Press Union",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "New",
+   "format": "{} Pending",
+   "label": "New Application",
+   "link_to": "Gambia Press Union",
+   "stats_filter": "{\"status\":\"Pending\"}",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Public Form",
+   "type": "URL",
+   "url": "/form"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "",
+   "label": "GPU Settings",
+   "link_to": "GPU Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "GPU Forms"
+}
