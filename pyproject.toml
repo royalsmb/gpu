@@ -3,7 +3,7 @@ name = "gpu"
 authors = [
     { name = "royalsmb", email = "hello@royalsmb.com"}
 ]
-description = "gambia press union"
+description = "gpu"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

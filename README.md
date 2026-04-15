@@ -1,6 +1,6 @@
 ### Gpu
 
-gambia press union
+gpu
 
 ### Installation
 
