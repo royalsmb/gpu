@@ -91,14 +91,14 @@ export default function App() {
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submittedName, setSubmittedName] = useState<string>(() => getQueryParam('ref') || '');
-  const [confirmedStatus, setConfirmedStatus] = useState<string>('');
+  const [submittedName, setSubmittedName] = useState<string>('');
+  const [confirmedStatus, setConfirmedStatus] = useState<string>(initialLanding === 'paid' ? 'Confirming…' : '');
 
   useEffect(() => {
     if (initialLanding !== 'paid') return;
-    const ref = getQueryParam('ref');
-    if (!ref) return;
-    const body = new URLSearchParams({ name: ref }).toString();
+    const checkoutId = getQueryParam('session_id') || getQueryParam('checkout_id');
+    if (!checkoutId) return;
+    const body = new URLSearchParams({ checkout_id: checkoutId }).toString();
     fetch('/api/method/gpu.api.confirm_payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -106,8 +106,12 @@ export default function App() {
       credentials: 'same-origin',
     })
       .then((r) => r.json())
-      .then((j) => setConfirmedStatus((j?.message?.payment_status as string) || ''))
-      .catch(() => {});
+      .then((j) => {
+        const msg = j?.message || {};
+        if (msg.name) setSubmittedName(msg.name);
+        setConfirmedStatus(msg.payment_status || '');
+      })
+      .catch(() => setConfirmedStatus('Could not confirm payment yet'));
   }, [initialLanding]);
 
   const [formData, setFormData] = useState<AnyRec>({
@@ -211,13 +215,13 @@ export default function App() {
       }
       const json = await res.json();
       const message = json?.message || {};
-      setSubmittedName(message.name || '');
 
       if (message.payment_required && message.payment_url) {
         window.location.href = message.payment_url;
         return;
       }
 
+      setSubmittedName(message.name || '');
       setLanding('submitted');
       window.scrollTo(0, 0);
     } catch (err: any) {
@@ -388,10 +392,16 @@ export default function App() {
   if (landing !== 'form') {
     const isPaid = landing === 'paid';
     const isFailed = landing === 'failed';
+    const paidBody = confirmedStatus === 'Confirming…'
+      ? 'Confirming your payment with Jokoor…'
+      : submittedName
+      ? `Your application fee has been received. Application ${submittedName} has been recorded and is now under review.`
+      : 'Your application fee has been received. Your application has been recorded and is now under review.';
+
     const tone = isPaid
-      ? { bg: '#defbe6', border: '#24a148', title: 'Payment Received', body: `Thank you. Your application fee has been received. Application ${submittedName || ''} is now under review.`.replace('  ', ' ') }
+      ? { bg: '#defbe6', border: '#24a148', title: 'Payment Received', body: paidBody }
       : isFailed
-      ? { bg: '#fff1f1', border: '#da1e28', title: 'Payment Failed', body: `We could not confirm your payment${submittedName ? ` for ${submittedName}` : ''}. Please try again or contact the GPU office.` }
+      ? { bg: '#fff1f1', border: '#da1e28', title: 'Payment Failed', body: 'We could not confirm your payment. Your application was not submitted. Please try again.' }
       : { bg: '#defbe6', border: '#24a148', title: 'Application Submitted', body: `Thank you, ${formData.applicant_name}. Application ${submittedName || ''} has been recorded.`.replace('  ', ' ') };
 
     return (
@@ -471,7 +481,7 @@ export default function App() {
               disabled={submitting}
               className="px-6 py-3 text-sm font-normal text-white bg-ibm-red hover:bg-ibm-red-hover transition-colors shadow-sm flex items-center disabled:opacity-60"
             >
-              {step === 6 ? (submitting ? 'Submitting…' : 'Submit Application') : 'Next Step'}
+              {step === 6 ? (submitting ? 'Processing…' : 'Proceed to Payment') : 'Next Step'}
               {step < 6 && (
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
