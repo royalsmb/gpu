@@ -184,6 +184,89 @@ def check_payment(name):
 	return doc
 
 
+def _fetch_jokoor_checkout(checkout_id, settings):
+	api_key = settings.get_active_api_key()
+	if not api_key:
+		return None
+	base_url = (settings.jokoor_api_base_url or "https://api.jokoor.com/v1").rstrip("/")
+	try:
+		resp = requests.get(
+			f"{base_url}/checkouts/{checkout_id}",
+			headers={"Authorization": f"Bearer {api_key}"},
+			timeout=20,
+		)
+	except requests.RequestException as e:
+		frappe.log_error(message=str(e), title="Jokoor get checkout network error")
+		return None
+	if resp.status_code >= 400:
+		frappe.log_error(
+			message=f"Status {resp.status_code}: {resp.text[:500]}",
+			title="Jokoor get checkout error",
+		)
+		return None
+	return (resp.json() or {}).get("data") or {}
+
+
+@frappe.whitelist(allow_guest=True)
+def confirm_payment(name):
+	"""Called from the /form?paid=1 landing page. Pulls the current checkout
+	status from Jokoor and marks the application Paid if the payment has
+	succeeded. Safe to call repeatedly."""
+	row = frappe.db.get_value(
+		"Gambia Press Union",
+		name,
+		["name", "checkout_id", "payment_status", "amount_paid", "paid_at"],
+		as_dict=True,
+	)
+	if not row:
+		frappe.throw(_("Application not found."), frappe.DoesNotExistError)
+
+	if row.payment_status == "Paid":
+		return {
+			"name": row.name,
+			"payment_status": row.payment_status,
+			"amount_paid": row.amount_paid,
+			"paid_at": row.paid_at,
+		}
+
+	if not row.checkout_id:
+		return {"name": row.name, "payment_status": row.payment_status}
+
+	settings = _get_settings()
+	data = _fetch_jokoor_checkout(row.checkout_id, settings) or {}
+	status_raw = (data.get("status") or "").lower()
+	tx = data.get("transaction") or {}
+
+	if status_raw in ("completed", "succeeded", "paid"):
+		frappe.db.set_value(
+			"Gambia Press Union",
+			name,
+			{
+				"payment_status": "Paid",
+				"transaction_id": tx.get("id") or data.get("transaction_id"),
+				"amount_paid": flt(data.get("amount") or settings.application_fee),
+				"paid_at": now_datetime(),
+			},
+			update_modified=False,
+		)
+		frappe.db.commit()
+		return {
+			"name": name,
+			"payment_status": "Paid",
+			"amount_paid": flt(data.get("amount") or settings.application_fee),
+		}
+	if status_raw in ("cancelled", "canceled", "expired"):
+		frappe.db.set_value("Gambia Press Union", name, "payment_status", "Cancelled", update_modified=False)
+		frappe.db.commit()
+		return {"name": name, "payment_status": "Cancelled"}
+	if status_raw == "failed":
+		frappe.db.set_value("Gambia Press Union", name, "payment_status", "Failed", update_modified=False)
+		frappe.db.commit()
+		return {"name": name, "payment_status": "Failed"}
+
+	return {"name": name, "payment_status": row.payment_status, "jokoor_status": status_raw or None}
+
+
 def _verify_signature(raw_body: bytes, signature: str, secret: str) -> bool:
 	if not secret:
 		return True

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CarbonInput = ({ label, id, name, type = 'text', required = false, ...props }: any) => (
   <div className="flex flex-col mb-6 w-full">
@@ -92,6 +92,23 @@ export default function App() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submittedName, setSubmittedName] = useState<string>(() => getQueryParam('ref') || '');
+  const [confirmedStatus, setConfirmedStatus] = useState<string>('');
+
+  useEffect(() => {
+    if (initialLanding !== 'paid') return;
+    const ref = getQueryParam('ref');
+    if (!ref) return;
+    const body = new URLSearchParams({ name: ref }).toString();
+    fetch('/api/method/gpu.api.confirm_payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      credentials: 'same-origin',
+    })
+      .then((r) => r.json())
+      .then((j) => setConfirmedStatus((j?.message?.payment_status as string) || ''))
+      .catch(() => {});
+  }, [initialLanding]);
 
   const [formData, setFormData] = useState<AnyRec>({
     applicant_name: '',
