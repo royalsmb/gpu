@@ -372,10 +372,10 @@ export default function App() {
     const isPaid = landing === 'paid';
     const isFailed = landing === 'failed';
     const tone = isPaid
-      ? { bg: '#defbe6', border: '#24a148', title: 'Payment Received', body: `Thank you${submittedName ? `. Your application ${submittedName}` : ''}. Your application fee has been received and your application is now under review.` }
+      ? { bg: '#defbe6', border: '#24a148', title: 'Payment Received', body: `Thank you. Your application fee has been received. Application ${submittedName || ''} is now under review.`.replace('  ', ' ') }
       : isFailed
       ? { bg: '#fff1f1', border: '#da1e28', title: 'Payment Failed', body: `We could not confirm your payment${submittedName ? ` for ${submittedName}` : ''}. Please try again or contact the GPU office.` }
-      : { bg: '#defbe6', border: '#24a148', title: 'Application Submitted', body: `Thank you, ${formData.applicant_name}. Your application has been recorded${submittedName ? ` as ${submittedName}` : ''}.` };
+      : { bg: '#defbe6', border: '#24a148', title: 'Application Submitted', body: `Thank you, ${formData.applicant_name}. Application ${submittedName || ''} has been recorded.`.replace('  ', ' ') };
 
     return (
       <div className="min-h-screen bg-ibm-gray-10 p-6 md:p-12 flex justify-center">
